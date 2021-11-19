@@ -351,19 +351,28 @@ template {
 /* // ME GUILL */
 
 :root {
---redborder: #ca2026;
---backgroundcolourofbody: #000000;
---backgroundcolourofsection: #212121;
+--redborder: #000000;
+--backgroundcolourofbody: #ffffff;
+--backgroundcolourofsection: #ffffff;
+--backgroundcolourofsubection: #6106ab;
+--background_body_colour_primary: rgb(0,195,252);
+--background_body_colour_secondary: linear-gradient(to top, #00c3fc, #27afff, #8193ff, #c767ee, #f80bb3);
 
---location-timezonebackgroundcolour: #ffffff;
---location-timezonetextcolour: #000000;
+} #fog {
+  height: 20vmin;
+  width: 20vmin;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--backgroundcolourofbody);
+  height: 100%;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: lighter;
+  font-size: 1.0em;
+  /* background-color: var(--backgroundcolourofbody); */
   display: flex;
   justify-content: center;
+  background: var(--background_body_colour_primary);
+  background: var(--background_body_colour_secondary);
 }
 
 section {
@@ -373,14 +382,21 @@ section {
   justify-content: center;
   align-items: center;
   width: 70%;
-  border: solid;
   text-align: center;
   background-color: var(--backgroundcolourofsection);
-  border-color: red;
+  background-repeat: no-repeat;
+  object-fit: cover;
   word-wrap: normal;
-  color:yellow;
+  color:white;
+  background: var(--background_body_colour_primary);
+  background: var(--background_body_colour_secondary);
+}
 
-} 
+.heroimage {
+  background-image: url("/nfsheroimage_vignette.ae9e093b.jpg");
+  background-size: cover;
+  width: 100%;
+}
 
 .weather-icon {
   display: flex;
@@ -390,14 +406,10 @@ section {
 } 
 
 .location {
-  border-bottom: solid;
-  border-color: var(--redborder);
   margin: 8em 0em 0em 0em;
 } 
 
 .location-timezone {
-  color:var(--location-timezonetextcolour);
-  background-color: var(--location-timezonebackgroundcolour);
   margin: 0rem 2rem 0rem 2rem;
   font-size: 2em;
 } 
@@ -408,24 +420,118 @@ section {
   justify-content: center;
   align-items: center;
   font-size: 2em;
+  margin: 0em 0em 2em 0em;
 
 } 
 
 .sub-weather {
+  display: flex;
   flex-flow: row wrap;
-  margin: 1em 2em 1em 2em;
+  margin: 0em 2em 1em 2em;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--backgroundcolourofsubection);
 } 
 
 .sub-weather > * {
   margin: 0em 1em 0em 1em;
 
 }
+
 .location_2{
   order: 0;
 } .location_3 {
   order: 1;
 } .location_4 {
   order: 2;
+}
+
+/* Mobile */
+
+@media only screen and (max-width: 600px) {
+  body {
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 1.0em;
+    display: flex;
+    justify-content: center;
+  }
+  
+  section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    background-color: var(--backgroundcolourofsection);
+    background-repeat: no-repeat;
+    object-fit: cover;
+    word-wrap: normal;
+    color:white;
+  }
+  
+  .heroimage {
+    /* background-image: url("/img/nfsheroimage_vig_2.jpg"); */
+    background-size: cover;
+    width: 100%;
+  }
+  
+  .weather-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } 
+  
+  .location {
+    margin: 18em 0em 0em 0em;
+  } 
+  
+  .location-timezone {
+    margin: 0rem 2rem 0rem 2rem;
+    font-size: 2em;
+  } 
+  
+  .temperature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    margin: 0em 0em 2em 0em;
+  
+  } 
+  
+  .sub-weather {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0em 2em 1em 2em;
+    justify-content: center;
+    width: 100%;
+    background: var(--background_body_colour_primary);
+    background: var(--background_body_colour_secondary);
+  } 
+  
+  .sub-weather > * {
+    margin: 0em 1em 0em 1em;
+    width: 100%;
+  
+  }
+  .location_2{
+    order: 0;
+  } .location_3 {
+    order: 1;
+  } .location_4 {
+    order: 2;
+  } #fog {
+    height: 22 vmin;
+    width: 22 vmin;
+}
+  
+  
 }
 
 /*# sourceMappingURL=/normalize.1114379f.css.map */

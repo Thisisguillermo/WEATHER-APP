@@ -121,60 +121,81 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var apiKey = 'dd7abd123d47b36357eb5e8568f8526f';
 var weatherUnits = 'metric';
 var weatherDisplayLanguage = 'en';
-window.addEventListener('load', function () {
-  var lat;
-  var long;
-  var TemperatureDescription = document.querySelector('.temperature-description');
-  var TemperatureDegree = document.querySelector('.temperature-degree');
-  var LocationTimezone = document.querySelector('.location-timezone');
-  var icons = new Skycons({
-    "color": "white"
+var TemperatureDescription = document.querySelector('.temperature-description');
+var TemperatureDegree = document.querySelector('.temperature-degree');
+var LocationTimezone = document.querySelector('.location-timezone');
+var WeatherIcon = document.querySelector('.weathericon');
+var icons = new Skycons({
+  "color": "white"
+});
+icons.set("clear-day", Skycons.CLEAR_DAY);
+icons.set("clear-night", Skycons.CLEAR_NIGHT);
+icons.set("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
+icons.set("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
+icons.set("cloudy", Skycons.CLOUDY);
+icons.set("rain", Skycons.RAIN);
+icons.set("sleet", Skycons.SLEET);
+icons.set("snow", Skycons.SNOW);
+icons.set("wind", Skycons.WIND);
+icons.set("fog", Skycons.FOG);
+icons.play();
+Skycons;
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {}
+
+  ;
+}
+
+;
+
+function showPosition(position) {
+  var lat = position.coords.latitude;
+  var long = position.coords.longitude;
+  console.log(lat, long);
+  var api = "https://api.openweathermap.org/data/2.5/weather?lat=".concat(lat, "&lon=").concat(long, "&units=").concat(weatherUnits, "&lang=").concat(weatherDisplayLanguage, "&appid=").concat(apiKey);
+  console.log(api);
+  fetch(api).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    var _data$main = data.main,
+        temp = _data$main.temp,
+        name = _data$main.name;
+    var description = data.weather[0].description;
+    var _data$weather$0$main = data.weather[0].main,
+        weathermain = _data$weather$0$main.weathermain,
+        icon = _data$weather$0$main.icon,
+        id = _data$weather$0$main.id;
+    var location = data.name;
+    console.log(data);
+    console.log(temp);
+    console.log(data.weather[0].description);
+    console.log(data.weather[0].main);
+    console.log(data.weather[0].id);
+    console.log(data.weather[0].icon);
+    console.log(location); // set DOM elements from the api
+
+    TemperatureDegree.textContent = Math.floor(temp) + '°';
+    TemperatureDescription.textContent = description[0].toUpperCase() + description.slice(1).toLowerCase();
+    LocationTimezone.textContent = location;
+    openWeatherIconId = data.weather[0].icon;
+    console.log(openWeatherIconId);
+    var openWeatherPicture = "http://openweathermap.org/img/wn/".concat(openWeatherIconId, "@2x.png");
+    whatever = openWeatherPicture;
+    console.log(openWeatherPicture);
+    var img = document.createElement('img');
+    img.src = openWeatherPicture;
+    document.getElementById('iconwhat').appendChild(img);
+    WeatherIcon.append(whatever);
   });
-  icons.set("clear-day", Skycons.CLEAR_DAY);
-  icons.set("clear-night", Skycons.CLEAR_NIGHT);
-  icons.set("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
-  icons.set("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
-  icons.set("cloudy", Skycons.CLOUDY);
-  icons.set("rain", Skycons.RAIN);
-  icons.set("sleet", Skycons.SLEET);
-  icons.set("snow", Skycons.SNOW);
-  icons.set("wind", Skycons.WIND);
-  icons.set("fog", Skycons.FOG);
+}
+
+window.addEventListener('load', function () {
   icons.play();
   Skycons;
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      lat = position.coords.latitude;
-      long = position.coords.longitude;
-      console.log(lat);
-      console.log(long);
-      var api = "https://api.openweathermap.org/data/2.5/weather?lat=".concat(lat, "&lon=").concat(long, "&units=").concat(weatherUnits, "&lang=").concat(weatherDisplayLanguage, "&appid=").concat(apiKey);
-      console.log(api);
-      fetch(api).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        console.log(data);
-        var _data$main = data.main,
-            temp = _data$main.temp,
-            name = _data$main.name;
-        console.log(temp);
-        var description = data.weather[0].description;
-        console.log(data.weather[0].description);
-        var _data$weather$0$main = data.weather[0].main,
-            weathermain = _data$weather$0$main.weathermain,
-            icon = _data$weather$0$main.icon;
-        console.log(data.weather[0].main); // const { name } = data;
-
-        var location = data.name;
-        console.log(location); // set DOM elements from the api
-
-        TemperatureDegree.textContent = Math.floor(temp) + '°';
-        TemperatureDescription.textContent = description[0].toUpperCase() + description.slice(1).toLowerCase();
-        LocationTimezone.textContent = location;
-      });
-    });
-  } else {}
+  getLocation();
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -204,7 +225,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41749" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38271" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
