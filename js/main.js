@@ -8,21 +8,6 @@ let LocationTimezone = document.querySelector('.location-timezone');
 let WeatherIcon = document.querySelector('.weathericon')
 
 
-var icons = new Skycons({ "color": "white" });
-
-icons.set("clear-day", Skycons.CLEAR_DAY);
-icons.set("clear-night", Skycons.CLEAR_NIGHT);
-icons.set("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
-icons.set("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
-icons.set("cloudy", Skycons.CLOUDY);
-icons.set("rain", Skycons.RAIN);
-icons.set("sleet", Skycons.SLEET);
-icons.set("snow", Skycons.SNOW);
-icons.set("wind", Skycons.WIND);
-icons.set("fog", Skycons.FOG);
-
-icons.play(); Skycons
-
 
 
 
@@ -70,18 +55,16 @@ function showPosition(position) {
             whatever = openWeatherPicture
             console.log(openWeatherPicture);
 
-            var img = document.createElement('img'); 
+            var img = document.createElement('img');
             img.src = openWeatherPicture;
             document.getElementById('iconwhat').appendChild(img);
 
-            
-            WeatherIcon.append(whatever);
+
 
 
         });
 }
 
 window.addEventListener('load', () => {
-    icons.play(); Skycons
     getLocation();
 });

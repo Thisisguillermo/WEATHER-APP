@@ -125,21 +125,6 @@ var TemperatureDescription = document.querySelector('.temperature-description');
 var TemperatureDegree = document.querySelector('.temperature-degree');
 var LocationTimezone = document.querySelector('.location-timezone');
 var WeatherIcon = document.querySelector('.weathericon');
-var icons = new Skycons({
-  "color": "white"
-});
-icons.set("clear-day", Skycons.CLEAR_DAY);
-icons.set("clear-night", Skycons.CLEAR_NIGHT);
-icons.set("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
-icons.set("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
-icons.set("cloudy", Skycons.CLOUDY);
-icons.set("rain", Skycons.RAIN);
-icons.set("sleet", Skycons.SLEET);
-icons.set("snow", Skycons.SNOW);
-icons.set("wind", Skycons.WIND);
-icons.set("fog", Skycons.FOG);
-icons.play();
-Skycons;
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -188,13 +173,10 @@ function showPosition(position) {
     var img = document.createElement('img');
     img.src = openWeatherPicture;
     document.getElementById('iconwhat').appendChild(img);
-    WeatherIcon.append(whatever);
   });
 }
 
 window.addEventListener('load', function () {
-  icons.play();
-  Skycons;
   getLocation();
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -225,7 +207,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38271" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34843" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

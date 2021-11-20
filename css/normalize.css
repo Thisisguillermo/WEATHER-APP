@@ -430,7 +430,8 @@ section {
   margin: 0em 2em 1em 2em;
   justify-content: center;
   width: 100%;
-  background-color: var(--backgroundcolourofsubection);
+  background: var(--background_body_colour_primary);
+  background: var(--background_body_colour_secondary);
 } 
 
 .sub-weather > * {
@@ -529,6 +530,8 @@ section {
   } #fog {
     height: 22 vmin;
     width: 22 vmin;
+} .main-weather {
+  margin: 0em 0em 16em 0em;
 }
   
   
